@@ -139,6 +139,7 @@ with col1:
 
 
 with col2:
+    append_bt = None
     pdf_df = None
     st.header("Extract text")
     if file is not None:
@@ -148,8 +149,8 @@ with col2:
         progress_text = "Please wait."
         my_bar = st.progress(0, text=progress_text)
         pdf_df = extract_pdf_data(doc, my_bar)
-        editor_df = st.data_editor(pdf_df)
-        append_bt = st.button('Append to Google Sheet')
+    editor_df = st.data_editor(pdf_df)
+    append_bt = st.button('Append to Google Sheet')
 
     if append_bt:
         conn = st.connection("gsheets", type=GSheetsConnection)
